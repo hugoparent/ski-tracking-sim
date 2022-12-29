@@ -1,0 +1,15 @@
+.card {
+    height: 100% !important;
+}
+
+#current-data-card {
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
