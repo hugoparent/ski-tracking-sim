@@ -311,5 +311,5 @@ if __name__ == '__main__':
     min_altitude = df_in['relativeAltitude'].min()
     max_altitude = df_in['relativeAltitude'].max()
 
-    app.run_server(debug=True)
-    server = app.server
+    server = app.run_server(debug=True)
+
