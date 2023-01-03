@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 import time
 
 mapbox_access_token = "pk.eyJ1IjoiaHVnb3BhcmVudCIsImEiOiJjbGF3ZHNyNWcwNWVvM3BzMjQyY213bzhmIn0.WBeiT-Molpx6kqiEiVxk1A"
-
+DATASET = "https://raw.githubusercontent.com/hugoparent/ski-tracking-sim/main/output_data/output.csv"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE], eager_loading=True)
 server = app.server
 
@@ -301,7 +301,7 @@ def update_cumul(n):
             html.P('Distance: {:.0f}m'.format(distance_total), className='h3')
         ]
 if __name__ == '__main__':
-    df = pd.read_csv('../output_data/output.csv')
+    df = pd.read_csv(DATASET)
 
     df_in = df.copy()
 
