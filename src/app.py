@@ -5,10 +5,19 @@ from dash import dcc, html, callback, ctx, State
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-import time
 
 mapbox_access_token = "pk.eyJ1IjoiaHVnb3BhcmVudCIsImEiOiJjbGF3ZHNyNWcwNWVvM3BzMjQyY213bzhmIn0.WBeiT-Molpx6kqiEiVxk1A"
+
+#import data
 DATASET = "https://raw.githubusercontent.com/hugoparent/ski-tracking-sim/main/output_data/output.csv"
+df = pd.read_csv(DATASET)
+df_in = df.copy()
+# get number of rows
+min_time = 0
+max_time = n_rows = df_in.shape[0]
+min_altitude = df_in['relativeAltitude'].min()
+max_altitude = df_in['relativeAltitude'].max()
+
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE], eager_loading=True)
 server = app.server
 
@@ -301,16 +310,7 @@ def update_cumul(n):
             html.P('Distance: {:.0f}m'.format(distance_total), className='h3')
         ]
 if __name__ == '__main__':
-    df = pd.read_csv(DATASET)
 
-    df_in = df.copy()
+    app.run_server(debug=False)
 
-    # get number of rows
-
-    min_time = 0
-    max_time = n_rows = df_in.shape[0]
-    min_altitude = df_in['relativeAltitude'].min()
-    max_altitude = df_in['relativeAltitude'].max()
-
-    app.run_server(debug=True)
 
