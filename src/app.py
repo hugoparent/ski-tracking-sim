@@ -2,7 +2,6 @@ import dash
 import numpy
 import pandas as pd
 from dash import dcc, html, callback, ctx, State
-from scipy.signal import savgol_filter
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
@@ -301,7 +300,7 @@ def update_cumul(n):
             html.P('Distance: {:.0f}m'.format(distance_total), className='h3')
         ]
 if __name__ == '__main__':
-    df = pd.read_csv('output_data/output.csv')
+    df = pd.read_csv('../output_data/output.csv')
 
     df_in = df.copy()
 
@@ -313,3 +312,5 @@ if __name__ == '__main__':
     max_altitude = df_in['relativeAltitude'].max()
 
     app.run_server(debug=True)
+    server = app.server
+    
