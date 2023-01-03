@@ -10,6 +10,7 @@ import time
 mapbox_access_token = "pk.eyJ1IjoiaHVnb3BhcmVudCIsImEiOiJjbGF3ZHNyNWcwNWVvM3BzMjQyY213bzhmIn0.WBeiT-Molpx6kqiEiVxk1A"
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE], eager_loading=True)
+server = app.server
 
 app.layout = html.Div([
             # title
@@ -311,5 +312,5 @@ if __name__ == '__main__':
     min_altitude = df_in['relativeAltitude'].min()
     max_altitude = df_in['relativeAltitude'].max()
 
-    server = app.run_server(debug=True)
+    app.run_server(debug=True)
 
